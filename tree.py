@@ -28,7 +28,7 @@ def get_pair(data):
     if(type(data) == dict):
         # current data is a node
         id = data['id']
-        req.extend((id, get_leaves(data)))
+        req.append((id, get_leaves(data)))
         if(has_branch(data)):
             req.extend(get_pair(data['branches']))
     else:
@@ -36,9 +36,8 @@ def get_pair(data):
         for branch in data:
             req.extend(get_pair(branch))
 
-    return req
-    
-        
+    return req    
+
 print(get_leaves({
     "branches": data,
 }))
